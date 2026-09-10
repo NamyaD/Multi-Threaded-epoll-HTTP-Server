@@ -15,9 +15,9 @@ int main() {
     setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));//socket configure
 
     // bind(): assign this socket to a specific address + port.
-    sockaddr_in addr{};
-    addr.sin_family = AF_INET;
-    addr.sin_addr.s_addr = INADDR_ANY;
+    sockaddr_in addr{};//creates address
+    addr.sin_family = AF_INET;//iPv4
+    addr.sin_addr.s_addr = INADDR_ANY;//accept on any local interface
     addr.sin_port = htons(8080);
     bind(listen_fd, (sockaddr*)&addr, sizeof(addr));
 
