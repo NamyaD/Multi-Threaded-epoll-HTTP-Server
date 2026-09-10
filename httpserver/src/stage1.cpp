@@ -7,12 +7,12 @@
 int main() {
     // socket(): ask the OS for a communication endpoint.
     // AF_INET = IPv4, SOCK_STREAM = TCP (reliable, ordered byte stream)
-    int listen_fd = socket(AF_INET, SOCK_STREAM, 0);
+    int listen_fd = socket(AF_INET, SOCK_STREAM, 0);//socket create
 
     // Without this, restarting the server quickly gives "Address already in use"
     // because the OS holds the port in a TIME_WAIT state briefly after use.
-    int opt = 1;
-    setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+    int opt = 1;// ON
+    setsockopt(listen_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));//socket configure
 
     // bind(): assign this socket to a specific address + port.
     sockaddr_in addr{};
